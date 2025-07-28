@@ -1,4 +1,4 @@
-# Smart Contract Compliance Checker (Smart Contract Audit + LLM RAG)
+# RAG Smart Contract Security Audit (Smart Contract Security Audit + LLM RAG)
 
 A production-ready, AI-powered tool that uses **RAG (Retrieval-Augmented Generation)** to analyze Solidity smart contracts for compliance, security, and upgradeability.
 
@@ -8,12 +8,15 @@ A production-ready, AI-powered tool that uses **RAG (Retrieval-Augmented Generat
 >  Not just an LLM wrapper — it’s a real RAG system for blockchain security.
 
 ---
+
 ## About This Project:
 
- Ultilization of **LLM integration with semantic search**
- Proper **Retrieval-Augmented Generation (RAG)** application
- Domain-specific knowledge in **blockchain and smart contract security**
- Real-world utility, not just another chatbot
+- Utilization of **LLM integration with semantic search**
+- Proper **Retrieval-Augmented Generation (RAG)** application
+- Domain-specific knowledge in **blockchain and smart contract security**
+- Real-world utility, not just another chatbot
+- **Tagged EIP references with hyperlinks** in AI suggestions (e.g. [EIP-1967](https://eips.ethereum.org/EIPS/eip-1967))
+- **Auto-grounded answers with source snippets** from OpenZeppelin + EIPs
 
 ---
 
@@ -24,7 +27,7 @@ Try it live: \[Insert Streamlit Cloud Link Here]
 
 ---
 
-##  What It Does
+## What It Does
 
 Paste any Solidity smart contract and get:
 
@@ -34,6 +37,7 @@ Paste any Solidity smart contract and get:
 |  **Risk Breakdown**      | List of missing security patterns with severity labels (High/Medium) |
 |  **AI Suggestions**      | Smart fix recommendations using RAG pipeline                         |
 |  **References Included** | Each suggestion is grounded in OpenZeppelin Docs or EIPs             |
+|  **Linked EIP Tags**     | Automatically extracts & hyperlinks referenced EIPs (e.g. EIP-1967)  |
 
 ---
 
@@ -49,7 +53,7 @@ Smart contracts run **billions of dollars**, but:
 
 ---
 
-##  Architecture
+## Architecture
 
 ```python
 graph TD
@@ -65,7 +69,7 @@ graph TD
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 | Component        | Tool / Library                            |
 | ---------------- | ----------------------------------------- |
@@ -92,48 +96,51 @@ The prompt + retrieved chunks are passed to `Falcon-7B-Instruct` via Hugging Fac
  **Grounded Output**:
 The suggestion + source snippet is shown in UI — not hallucinated.
 
+ **EIP Tagging**:
+Automatically detects referenced EIPs in retrieved documents and adds clickable links.
+
 ---
 
 ## Screenshots
 
-###  Full Analysis Report
+### Full Analysis Report
 
 ![screenshot](docs/screenshot-1.png)
 
 ---
 
-###  Reference-Driven AI Suggestions
+### Reference-Driven AI Suggestions
 
 ![screenshot](docs/screenshot-2.png)
 
 ---
 
-##  How to Run Locally
+## How to Run Locally
 
 1. **Clone the Repo**
 
-   ```bash
-   git clone https://github.com/yourusername/smart-contract-compliance-checker.git
-   cd smart-contract-compliance-checker
-   ```
+```bash
+git clone https://github.com/yourusername/smart-contract-compliance-checker.git
+cd smart-contract-compliance-checker
+```
 
 2. **Install Dependencies**
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
 3. **Download Docs + Build Vectorstore**
 
-   ```bash
-   python build_db.py
-   ```
+```bash
+python build_db.py
+```
 
 4. **Run the App**
 
-   ```bash
-   streamlit run app.py
-   ```
+```bash
+streamlit run app.py
+```
 
 ---
 
@@ -141,10 +148,15 @@ The suggestion + source snippet is shown in UI — not hallucinated.
 
 This RAG system is grounded in:
 
-* [OpenZeppelin Contracts v4.x](https://docs.openzeppelin.com/contracts/4.x/)
+* [OpenZeppelin Contracts v4.9.3](https://docs.openzeppelin.com/contracts/4.x/)
 * [EIP-20](https://eips.ethereum.org/EIPS/eip-20)
 * [EIP-721](https://eips.ethereum.org/EIPS/eip-721)
 * [EIP-1155](https://eips.ethereum.org/EIPS/eip-1155)
+* [EIP-196](https://eips.ethereum.org/EIPS/eip-196)
+* [EIP-1967](https://eips.ethereum.org/EIPS/eip-1967)
+* [EIP-897](https://eips.ethereum.org/EIPS/eip-897)
+* [EIP-1822](https://eips.ethereum.org/EIPS/eip-1822)
+* [EIP-2535](https://eips.ethereum.org/EIPS/eip-2535)
 
 ---
 
@@ -159,7 +171,6 @@ HUGGINGFACEHUB_API_TOKEN=your_token_here
 ```
 
 ---
-
 
 ## Want to Extend It?
 

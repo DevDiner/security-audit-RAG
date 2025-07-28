@@ -24,6 +24,6 @@ def create_rag_chain():
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
         retriever=retriever,
-        return_source_documents=True  # ✅ Ensure we get retrieved docs
+        return_source_documents=True  # Ensure we get retrieved docs
     )
     return qa_chain

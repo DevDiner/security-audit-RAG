@@ -22,11 +22,18 @@ def check_compliance(code: str):
     else:
         issues.append({"issue": "Not Upgradeable", "risk": "Low"})
 
-    if "ERC20" in code:
-        score += 10
-    elif "ERC721" in code or "ERC1155" in code:
+    if "delegatecall" in code or "DELEGATECALL" in code:
         score += 10
     else:
-        issues.append({"issue": "No recognized ERC standard", "risk": "Medium"})
+        issues.append({"issue": "No Delegatecall Proxy Pattern", "risk": "Medium"})
+
+    if any(x in code for x in ["ERC20", "IERC20"]):
+        score += 10
+    elif any(x in code for x in ["ERC721", "IERC721"]):
+        score += 10
+    elif any(x in code for x in ["ERC1155", "IERC1155"]):
+        score += 10
+    else:
+        issues.append({"issue": "No recognized ERC standard (ERC20/721/1155)", "risk": "Medium"})
 
     return score, issues

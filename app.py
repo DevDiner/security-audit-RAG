@@ -2,15 +2,16 @@ import streamlit as st
 from compliance_rules import check_compliance
 from rag_pipeline import create_rag_chain
 from streamlit_echarts import st_echarts
+import re
 
-st.set_page_config(page_title="Smart Contract Compliance Checker", layout="wide")
-st.title("🔍 Smart Contract Compliance Checker (AI + RAG)")
+st.set_page_config(page_title="RAG Smart Contract Security Audit", layout="wide")
+st.title(" RAG Smart Contract Security Audit (Web3 Security + LLM RAG)")
 
 st.write("Paste your Solidity smart contract below to check compliance and get AI-powered suggestions.")
 
 code = st.text_area("Paste Solidity contract here:", height=300)
 
-# ✅ Gauge chart
+#  Gauge chart
 def render_gauge(score):
     option = {
         "tooltip": {"formatter": "{a} <br/>{b} : {c}%"},
@@ -24,9 +25,9 @@ def render_gauge(score):
                 "axisLine": {
                     "lineStyle": {
                         "color": [
-                            [0.3, "#FF4C4C"],  # Red
-                            [0.7, "#FFD700"],  # Yellow
-                            [1, "#4CAF50"],    # Green
+                            [0.3, "#FF4C4C"],
+                            [0.7, "#FFD700"],
+                            [1, "#4CAF50"],
                         ]
                     }
                 },
@@ -39,18 +40,18 @@ if st.button("Check Compliance"):
     if not code.strip():
         st.warning("Please paste a contract first!")
     else:
-        st.write("### ✅ Compliance Analysis")
+        st.write("### Compliance Analysis")
         score, issues = check_compliance(code)
 
-        st.write(f"**Compliance Score:** {score}/100")
+        st.write(f"Compliance Score: {score}/100")
         render_gauge(score)
 
         if issues:
-            st.write("### ❌ Issues Detected")
+            st.write("###  Issues Detected")
             for issue in issues:
                 st.write(f"- {issue['issue']} ({issue['risk']})")
 
-            st.write("### 💡 AI Suggestions (with References)")
+            st.write("###  AI Suggestions (with References)")
             st.info("Fetching suggestions and references from knowledge base...")
             qa_chain = create_rag_chain()
 
@@ -59,11 +60,18 @@ if st.button("Check Compliance"):
                     result = qa_chain({"query": f"How to fix this issue in Solidity: {issue['issue']}? Provide reference from docs."})
                     suggestion = result["result"]
 
-                    st.markdown(f"**{issue['issue']}** → {suggestion}")
+                    tag = ""
+                    docs = result.get("source_documents", [])
+                    if docs:
+                        ref_text = docs[0].page_content[:200]
+                        match = re.search(r"EIP[- ]?(\d+)", ref_text)
+                        if match:
+                            eip_num = match.group(1)
+                            tag = f" ([EIP-{eip_num}](https://eips.ethereum.org/EIPS/eip-{eip_num}))"
 
-                    # ✅ Show retrieved references
-                    retrieved_docs = result.get("source_documents", [])
-                    if retrieved_docs:
-                        st.caption(f"📚 Reference snippet: {retrieved_docs[0].page_content[:200]}...")
+                    st.markdown(f"**{issue['issue']}** → {suggestion}{tag}")
+
+                    if docs:
+                        st.caption(f" Reference snippet: {docs[0].page_content[:200]}...")
         else:
             st.success("Your contract looks compliant with basic checks!")
