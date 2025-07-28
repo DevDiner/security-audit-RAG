@@ -120,8 +120,8 @@ Automatically detects referenced EIPs in retrieved documents and adds clickable 
 1. **Clone the Repo**
 
 ```bash
-git clone https://github.com/yourusername/smart-contract-compliance-checker.git
-cd smart-contract-compliance-checker
+git clone https://github.com/DevDiner/security-audit-RAG.git
+cd security-audit-RAG
 ```
 
 2. **Install Dependencies**
