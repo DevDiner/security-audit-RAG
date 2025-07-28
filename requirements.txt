@@ -1,0 +1,6 @@
+streamlit
+langchain
+chromadb
+sentence-transformers
+huggingface_hub
+streamlit_echarts

@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.Python
+env/
+venv/
+.venv/
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Environment / secrets
+.env
+.env.*
+
+# Hugging Face token cache (if used)
+~/.huggingface/
+
+# Chroma vectorstore cache (optional)
+# ❗ REMOVE this line if you want to commit the vectorstore to GitHub
+vectorstore/
+
+# Downloads and datasets (if any)
+downloads/
+*.csv
+*.tsv
+*.json
+
+# Build and dist
+build/
+dist/
+
+# PyInstaller
+*.spec
+
+# Streamlit cache
+.streamlit/
+
+# Bytecode
+*.pyc
+
+# Gitignore for tests (optional)
+coverage/
+htmlcov/
+.pytest_cache/
+
+# Temporary notebooks / outputs
+output/
