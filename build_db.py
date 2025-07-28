@@ -1,9 +1,24 @@
-import os
 import requests
 from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
+from dotenv import load_dotenv
+import os
+from huggingface_hub import login
+
+# Load .env file
+load_dotenv()
+
+# Get token from environment
+token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+
+# Login to Hugging Face Hub
+if token:
+    login(token=token)
+else:
+    raise ValueError("Hugging Face API token not found in .env file.")
+
 
 CHROMA_PATH = "vectorstore"
 DOCS_PATH = "docs"
@@ -26,7 +41,11 @@ EIP_URLS = {
     "eip-897.md": "https://raw.githubusercontent.com/ethereum/EIPs/master/EIPS/eip-897.md",
     "eip-1822.md": "https://raw.githubusercontent.com/ethereum/EIPs/master/EIPS/eip-1822.md",
     "eip-1967.md": "https://raw.githubusercontent.com/ethereum/EIPs/master/EIPS/eip-1967.md",
-    "eip-2535.md": "https://raw.githubusercontent.com/ethereum/EIPs/master/EIPS/eip-2535.md"
+    "eip-2535.md": "https://raw.githubusercontent.com/ethereum/EIPs/master/EIPS/eip-2535.md",
+    "eip-777.md": "https://raw.githubusercontent.com/ethereum/EIPs/master/EIPS/eip-777.md",
+    "eip-6672.md": "https://raw.githubusercontent.com/ethereum/EIPs/master/EIPS/eip-6672.md",
+    "eip-223.md": "https://raw.githubusercontent.com/ethereum/EIPs/master/EIPS/eip-223.md",
+    "eip-1363.md": "https://raw.githubusercontent.com/ethereum/EIPs/master/EIPS/eip-1363.md"
 }
 
 def download_docs():

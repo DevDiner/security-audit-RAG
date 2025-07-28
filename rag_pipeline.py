@@ -18,7 +18,7 @@ def create_rag_chain():
 
     llm = HuggingFaceHub(
         repo_id="tiiuae/falcon-7b-instruct",  # Free inference model
-        model_kwargs={"temperature": 0.2, "max_new_tokens": 256}
+        model_kwargs={"temperature": 0.5, "max_new_tokens": 500}
     )
 
     qa_chain = RetrievalQA.from_chain_type(
