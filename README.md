@@ -1,4 +1,4 @@
-# Smart Contract Compliance Checker (AI + RAG)
+# Smart Contract Compliance Checker (Smart Contract Audit + LLM RAG)
 
 A production-ready, AI-powered tool that uses **RAG (Retrieval-Augmented Generation)** to analyze Solidity smart contracts for compliance, security, and upgradeability.
 
@@ -19,7 +19,7 @@ A production-ready, AI-powered tool that uses **RAG (Retrieval-Augmented Generat
 
 ## Live Demo
 
-** Try it live**: \[Insert Streamlit Cloud Link Here]
+Try it live: \[Insert Streamlit Cloud Link Here]
 *(No login required)*
 
 ---
@@ -51,7 +51,7 @@ Smart contracts run **billions of dollars**, but:
 
 ##  Architecture
 
-```mermaid
+```python
 graph TD
     A[User Contract Input] --> B[Rule-Based Compliance Checks]
     A --> C[RAG Pipeline]
