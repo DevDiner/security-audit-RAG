@@ -33,8 +33,8 @@ Thumbs.db
 ~/.huggingface/
 
 # Chroma vectorstore cache (optional)
-# ❗ REMOVE this line if you want to commit the vectorstore to GitHub
-vectorstore/
+# REMOVE this line if you want to commit the vectorstore to GitHub
+#vectorstore/
 
 # Downloads and datasets (if any)
 downloads/
