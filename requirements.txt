@@ -1,9 +1,9 @@
 streamlit
-langchain
-langchain-community
+langchain>=0.1.14
+langchain-community>=0.0.25
+huggingface_hub>=0.22.2
 chromadb
 sentence-transformers
-huggingface_hub
 streamlit_echarts
 requests
 python-dotenv

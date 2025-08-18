@@ -1,4 +1,5 @@
 # RAG Smart Contract Security Audit (Smart Contract Security Audit + LLM RAG)
+![landing page](image.png)
 
 A production-ready, AI-powered tool that uses **RAG (Retrieval-Augmented Generation)** to analyze Solidity smart contracts for compliance, security, and upgradeability.
 
@@ -77,7 +78,7 @@ graph TD
 | RAG Framework    | `LangChain`                               |
 | Embedding Model  | `sentence-transformers/all-MiniLM-L6-v2`  |
 | Vector Database  | `Chroma` (local persistent)               |
-| LLM Inference    | `Falcon-7B-Instruct` via Hugging Face Hub |
+| LLM Inference    | `google/flan-t5-base` via Hugging Face Hub |
 | Compliance Logic | Rule-based Python scoring system          |
 
 ---
@@ -91,7 +92,7 @@ OpenZeppelin + EIPs are embedded using `MiniLM` and stored in Chroma.
 On input, the top-k relevant doc chunks are retrieved via semantic search.
 
  **Generation**:
-The prompt + retrieved chunks are passed to `Falcon-7B-Instruct` via Hugging Face Hub.
+The prompt + retrieved chunks are passed to `google/flan-t5-base` via Hugging Face Hub.
 
  **Grounded Output**:
 The suggestion + source snippet is shown in UI — not hallucinated.

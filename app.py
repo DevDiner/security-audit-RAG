@@ -70,7 +70,7 @@ if st.button("Check Compliance"):
 
             for issue in issues:
                 with st.spinner(f"Generating fix for: {issue['issue']}"):
-                    result = qa_chain({"query": f"How to fix this issue in Solidity: {issue['issue']}? Provide reference from docs."})
+                    result = qa_chain.invoke({"query": f"How to fix this issue in Solidity: {issue['issue']}? Provide reference from docs."})
                     suggestion = result["result"]
 
                     tag = ""

@@ -29,12 +29,17 @@ Thumbs.db
 .env
 .env.*
 
+#Test codes
+test*
+**/test*.py
+# test.py
+
 # Hugging Face token cache (if used)
 ~/.huggingface/
 
 # Chroma vectorstore cache (optional)
 # REMOVE this line if you want to commit the vectorstore to GitHub
-#vectorstore/
+vectorstore/
 
 # Downloads and datasets (if any)
 downloads/
