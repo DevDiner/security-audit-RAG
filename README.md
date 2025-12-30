@@ -1,4 +1,4 @@
-# RAG Smart Contract Security Audit (Smart Contract Security Audit + LLM RAG)
+## RAG Smart Contract Security Audit (Smart Contract Security Audit + LLM RAG)
 ![landing page](image.png)
 
 A production-ready, AI-powered tool that uses **RAG (Retrieval-Augmented Generation)** to analyze Solidity smart contracts for compliance, security, and upgradeability.
@@ -187,6 +187,8 @@ HUGGINGFACEHUB_API_TOKEN=your_token_here
 Hi, I’m DevDiner — a Solidity + AI backend developer passionate about building secure and intelligent web3 tools.
 
 🔗 [LinkedIn](https://linkedin.com/in/irwinlow) • [Twitter](https://x.com/_bytequest_) • [Portfolio](https://github.com/DevDiner)
+
+
 
 
 
